@@ -1,0 +1,36 @@
+@baseUrl = http://localhost:8000/api/tasks
+@taskId = 14
+### Get all tasks
+GET {{baseUrl}} HTTP/1.1
+
+### Get finished tasks
+GET {{baseUrl}}?finished HTTP/1.1
+
+### Get a specific task
+GET {{baseUrl}}/{{taskId}} HTTP/1.1
+
+
+### Create a new task
+POST {{baseUrl}}/add/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "description": "This is a new task from api2",
+  "due_date": "2023-10-01T12:00:00Z",
+  "finished": false,
+  "priority": "medium"
+}
+
+### Update a task
+PUT {{baseUrl}}/{{taskId}}/update/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "description": "This is a new task from api2 __updated",
+  "due_date": "2023-10-01T12:00:00Z",
+  "finished": true,
+  "priority": "low"
+}
+
+### Delete a task
+DELETE {{baseUrl}}/{{taskId}}/delete/ HTTP/1.1
